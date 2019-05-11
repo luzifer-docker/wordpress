@@ -1,0 +1,27 @@
+#!/bin/bash
+set -euxo pipefail
+
+url="https://github.com/WordPress/WordPress/archive/${WP_VERSION}.tar.gz"
+packages=(
+	php7-gd
+	php7-mysqli
+	php7-opcache
+	php7-zip
+)
+
+function cleanup() {
+	rm -rf \
+		/tmp/wp.tgz
+}
+trap cleanup EXIT
+
+function step() {
+	echo "$@..." >&2
+}
+
+step "Downloading wordpress release ${WP_VERSION}"
+curl -sSfLo /opt/wp.tgz "${url}"
+echo "${WP_CHECKSUM}  /opt/wp.tgz" | sha256sum -c
+
+step "Installing required packages"
+apk --no-cache add "${packages[@]}"
