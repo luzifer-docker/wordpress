@@ -3,6 +3,7 @@ set -euxo pipefail
 
 url="https://github.com/WordPress/WordPress/archive/${WP_VERSION}.tar.gz"
 packages=(
+	php7-curl
 	php7-gd
 	php7-mysqli
 	php7-opcache
