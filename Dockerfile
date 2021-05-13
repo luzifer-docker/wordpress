@@ -1,7 +1,7 @@
 FROM luzifer/alpine-nginx-php
 
-ENV WP_VERSION=5.7.1 \
-    WP_CHECKSUM=d6c92c4e0e46ec90faa6a38a4d210345c05595e2f7b25cdc0b2a8a04a8a5c857
+ENV WP_VERSION=5.7.2 \
+    WP_CHECKSUM=717d21dc23f9e62ac8edae9278195ec868f8d665d01a3ad054d9e9c9b50170cc
 
 COPY rootfs /
 RUN set -ex && /usr/local/bin/container-setup
