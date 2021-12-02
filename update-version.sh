@@ -9,7 +9,7 @@ git reset --hard origin/master
 
 ### ---- ###
 
-version=$(curl -s "https://lv.luzifer.io/catalog-api/wordpress/latest.txt?p=version")
+version=$(curl -s "https://lv.luzifer.io/v1/catalog/wordpress/latest/version")
 grep -q "WP_VERSION=${version} " Dockerfile && exit 0 || echo "Update required"
 
 wphash=$(curl -sSfL "https://github.com/WordPress/WordPress/archive/${version}.tar.gz" | sha256sum | cut -d ' ' -f 1)
